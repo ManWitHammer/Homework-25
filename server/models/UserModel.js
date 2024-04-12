@@ -5,16 +5,24 @@ const userShema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	email: {
+	picture: {
 		type: String,
 		required: true
 	},
-	password: {
-		type: String,
+	cost: {
+		type: Number,
+		required: true
+	},
+	quantity: {
+		type: Number,
+		required: true
+	},
+	sale: {
+		type: Number,
 		required: true
 	}
 })
 
-const UserModel = mongoose.model('users', userShema)
+const UserModel = mongoose.model('products', userShema)
 
 module.exports = UserModel

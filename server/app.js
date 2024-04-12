@@ -30,12 +30,12 @@ app.get('/getUsers', async (req, res) => {
 		res.send({ error: 'Произошла ошибка при получении пользователей', err })
 	}
 })
-
+let a = 12123.2132
 // добавление нового пользователя в БД
 app.post('/addUser', async (req, res) => {
 	try {
-		const { name, email, password } = req.body
-		const newUser = { name, email, password }
+		const { name, picture, cost, quantity, sale } = req.body
+		const newUser = { name, picture, cost, quantity, sale }
 		await UserModel.create(newUser)
 		res.send({ message: 'Пользователь успешно добавлен' })
 	} catch (err) {
@@ -46,32 +46,15 @@ app.post('/addUser', async (req, res) => {
 	}
 })
 
-// удаление пользователя из БД
-app.delete('/deleteUser/:id', async (req, res) => {
-	try {
-		const { id } = req.params
-		console.log(id)
-		await UserModel.findByIdAndDelete(id)
-		res.send({ message: 'Пользователь успешно удален' })
-	} catch (err) {
-		console.error('Произошла ошибка при удалении пользователя', err)
-		res.send({
-			error: `Произошла ошибка при удалении пользователя ${err}`
-		})
-	}
-})
-
 // редактирование пользователя в БД
 app.patch('/editUser/:id', async (req, res) => {
 	try {
 		const id = req.params.id
 	
-		const { newName, newEmail, newPassword } = req.body
+		const { newSale } = req.body
 		const user = await UserModel.findById(id)
 		if (user) {
-			user.name = newName
-			user.email = newEmail
-			user.password = newPassword
+			user.sale = newSale
 		}
 		await user.save()
 		res.send({ message: 'Пользователь успешно отредактирован' })

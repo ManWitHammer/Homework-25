@@ -7,17 +7,18 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="container">
-			<div class="requests">
-				<p class="req req1GET">Запрос #1 - получение всех пользователей</p>
-				<p class="req req2POST">Запрос #2 - добавление нового пользователя</p>
-				<p class="req req3DEL">Запрос #3 - удаление пользователя</p>
-				<p class="req req4PATCH">Запрос #4 - редактирование пользователя</p>
-			</div>
-			<div class="responses">
-				<div class="miniContainer"></div>
-			</div>
+		<div class="preloader">
+            <div class="spinner"></div>
+        </div>
+        <div class="infoblock">
+			<button class="getAll">Получить все товары</button>
+			<button class="addProduct">Добавить товар</button>
+			<button class="getSale">Получить аукционные товары</button>
+			<button class="addSale">Добавить рандомно скидки</button>
 		</div>
-		<script src="script.js"></script>
+        <div class="container">
+			<h1 class="mainT">Нажмите на любую кнопку сверху:)</h1>
+		</div>
+		<script type="module" src="script.mjs"></script>
 	</body>
 </html>
