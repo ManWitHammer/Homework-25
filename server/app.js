@@ -30,6 +30,17 @@ app.get('/getUsers', async (req, res) => {
 		res.send({ error: 'Произошла ошибка при получении пользователей', err })
 	}
 })
+
+app.get('/getSale', async (req, res) => {
+	try {
+		const users = await UsersModel.find({ sale: { $gt: 0 }})
+		res.send(users)
+	} catch (err) {
+		console.error('Произошла ошибка при получении пользователей', err)
+		res.send({ error: 'Произошла ошибка при получении пользователей', err })
+	}
+})
+
 let a = 12123.2132
 // добавление нового пользователя в БД
 app.post('/addUser', async (req, res) => {
