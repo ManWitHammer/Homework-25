@@ -84,7 +84,7 @@ getAll.addEventListener('click', async () => {
 				<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span>`
 				: ''} ${(el.cost - el.cost * (el.sale / 100)).toFixed(2)}</p>
 				<p class="producer">${el.name}</p>
-				<p class="producer"><span>${el.quantity}</span> в наличии</p>
+				<p class="producer">${el.quantity != 0 ? `<span>${el.quantity}</span> в наличии` : 'нет в наличии'}</p>
 			</div>
 			`
 			)
@@ -107,10 +107,10 @@ getSale.addEventListener('click', async () => {
 					${el.sale != 0 ? `<div class="overlay">-${el.sale}%</div>` : ''}
 					<div class="timer"></div>
 				</div>
-				<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span>` 
+				<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span> => ` 
 				: ''} ${(el.cost - el.cost * (el.sale / 100)).toFixed(2)}</p>
 				<p class="producer">${el.name}</p>
-				<p class="producer"><span>${el.quantity}</span> в наличии</p>
+				<p class="producer">${el.quantity != 0 ? `<span>${el.quantity}</span> в наличии` : 'нет в наличии'}</p>
 			</div>
 			`
 			)

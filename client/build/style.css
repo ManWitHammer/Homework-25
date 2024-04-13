@@ -57,12 +57,25 @@ body {
 	cursor: pointer;
 }
 
+.infoblock button p {
+    font-size: 30px;
+    @media (max-width: 1200px) {
+        font-size: 25px; 
+      }
+      
+      @media (max-width: 992px) {
+        font-size: 20px; 
+      }
+  }
+
 .aboutblock {
     width: 1400px;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -79,40 +92,28 @@ body {
     }
 }
 
-@media only screen and (max-width: 1400px) {
-    .infoblock {
-        width: 100%;
-    }
-    .container {
-        width: 100%;
-    }
-    .aboutblock {
-        width: 100%;
-    }
-}
-
 .container {
     margin-top: 140px;
     width: 1400px;
     background: white;
     padding: 20px;
     display: flex;
-    gap: 25px;
+    gap: 20px;
     border-radius: 15px;
     flex-wrap: wrap;
     margin-bottom: 70px;
+    align-items: center;
+    justify-content: center;
 }
 
 .user {
     display: flex;
-    flex-direction: row;
-    width: 250px;
-    height: 390px;
+    flex-direction: column;
+    width: 220px;
+    height: 343.2px;
     padding: 5px;
     background: white;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
     font-family: 'Oswald', sans-serif;
     cursor: pointer;
 }
@@ -283,3 +284,48 @@ input {
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
  }
+
+ @media only screen and (max-width: 1400px) {
+    .infoblock {
+        width: 100%;
+    }
+    .container {
+        width: 100%;
+    }
+    .aboutblock {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .user {
+        width: 205px;
+        height: 319.8px;
+    }
+    .cost {
+        font-size: 18px;
+    }
+    .producer {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .user {
+        width: 190px;
+        height: 296.4px;
+    }
+    .cost {
+        font-size: 15px;
+    }
+    .producer {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .user {
+        width: 175px;
+        height: 273px;
+    }
+}
