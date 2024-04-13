@@ -303,10 +303,13 @@ input {
         height: 319.8px;
     }
     .cost {
-        font-size: 18px;
+        font-size: 20px;
     }
     .producer {
         font-size: 15px;
+    }
+    .overlay {
+        font-size: 12px;
     }
 }
 
@@ -316,10 +319,13 @@ input {
         height: 296.4px;
     }
     .cost {
-        font-size: 15px;
+        font-size: 16px;
     }
     .producer {
         font-size: 13px;
+    }
+    .overlay {
+        font-size: 10px;
     }
 }
 

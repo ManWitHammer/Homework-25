@@ -12,7 +12,7 @@ const app = express()
 
 app.use(
 	cors({
-		origin: ['https://homework-25.onrender.com'],
+		origin: ['https://homework-25.onrender.com', 'http://127.0.0.1:5500'],
 		methods: 'GET, PATCH, POST, DELETE'
 	})
 )
