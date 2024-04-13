@@ -21,6 +21,8 @@ window.addEventListener('load', function () {
     }, 1000)
   });
 
+const users = await getData('http://localhost:3002/getUsers')
+
 document.addEventListener('DOMContentLoaded', async () => {
 	if (!localStorage.getItem('cutscene')) {
 		body.insertAdjacentHTML('afterbegin', 
@@ -70,7 +72,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 getAll.addEventListener('click', async () => {
 	container.innerHTML = ''
 	try {
-		const users = await getData('http://localhost:3002/getUsers')
 		users.forEach(el => {
 			container.insertAdjacentHTML('beforeend',
 			`
@@ -96,8 +97,7 @@ getAll.addEventListener('click', async () => {
 getSale.addEventListener('click', async () => {
 	container.innerHTML = ''
 	try {
-		let users = await getData('http://localhost:3002/getUsers')
-		users = users.filter(el => el.sale != 0)
+		let users = await getData('http://localhost:3002/getSale')
 		users.forEach(el => {
 			container.insertAdjacentHTML('beforeend',
 			`
@@ -122,7 +122,6 @@ getSale.addEventListener('click', async () => {
 
 addSale.addEventListener('click', async () => {
 	try {
-		let users = await getData('http://localhost:3002/getUsers')
 		const user = users[Math.floor(Math.random() * users.length)]
 		const newSale = sales[Math.floor(Math.random() * sales.length)]
 		const patchThis = {
