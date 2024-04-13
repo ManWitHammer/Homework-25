@@ -21,7 +21,7 @@ window.addEventListener('load', function () {
     }, 1000)
   });
 
-const users = await getData('http://localhost:3002/getUsers')
+const users = await getData('https://readberries.onrender.com/getUsers')
 
 document.addEventListener('DOMContentLoaded', async () => {
 	if (!localStorage.getItem('cutscene')) {
@@ -97,7 +97,7 @@ getAll.addEventListener('click', async () => {
 getSale.addEventListener('click', async () => {
 	container.innerHTML = ''
 	try {
-		let users = await getData('http://localhost:3002/getSale')
+		let users = await getData('https://readberries.onrender.com/getSale')
 		users.forEach(el => {
 			container.insertAdjacentHTML('beforeend',
 			`
@@ -127,7 +127,7 @@ addSale.addEventListener('click', async () => {
 		const patchThis = {
 			newSale
 		}
-		const info = await patchData(`http://localhost:3002/editUser/${user._id}`, patchThis)
+		const info = await patchData(`https://readberries.onrender.com/editUser/${user._id}`, patchThis)
 		console.log(info)
 		if (user.sale == 0) {
 			alert(`Скидка ${newSale}% была добавлена у товара ${user.name}`)
@@ -164,7 +164,7 @@ addProduct.addEventListener('click', async (e) => {
 				quantity: +data.get('quantity'),
 				sale: 0
 			}
-			await postData(`http://localhost:3002/addUser`, user)
+			await postData(`https://readberries.onrender.com/addUser`, user)
 			form.reset()
 		})
 	} catch (err) {
@@ -184,7 +184,7 @@ addProduct.addEventListener('click', async (e) => {
 // 			password
 // 		}
 // 		console.log(user)
-// 		let info = await postData('http://localhost:3002/addUser', user)
+// 		let info = await postData('https://readberries.onrender.com/addUser', user)
 // 		console.log(info)
 // 		mini.insertAdjacentHTML('afterbegin', 
 // 			`
