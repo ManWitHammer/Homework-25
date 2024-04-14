@@ -52,9 +52,13 @@ body {
 	width: 22.5%;
 	border: none;
 	background: none;
-	color: white;
+	color: rgb(233, 232, 232);
 	font-size: 32px;
 	cursor: pointer;
+}
+
+.infoblock button:hover {
+	color: white;
 }
 
 .infoblock button p {
@@ -93,7 +97,7 @@ body {
 }
 
 .container {
-    margin-top: 140px;
+    margin-top: 110px;
     width: 1400px;
     background: white;
     padding: 20px;
@@ -285,6 +289,75 @@ input {
     animation: gradient 15s ease infinite;
  }
 
+ .menu {
+    display: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 20px;
+    
+ }
+
+ .menu span {
+    font-size: 100%;
+ }
+
+ .backGrey {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(70, 70, 70, 0.729);
+    z-index: 5;
+ }
+
+ .vibor {
+    position: fixed;
+    top: 0;
+    left: -425px;
+    margin-left: 0px;
+    width: 80%;
+    height: 100%;
+    background: white;
+    border-radius: 30px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    display: none;
+ }
+
+ .perehod {
+    margin-left: 400px;
+    transition: 0.3s ease-in-out;
+ }
+
+ .perehod1 {
+    margin-left: 0px;
+    transition: 0.3s ease-in-out;
+ }
+
+ .hide1 {
+    background: rgba(255, 255, 255, 0.0);
+    transition: 0.3s ease-in-out;
+ }
+
+ .vibor button {
+    margin-top: 40px;
+    color: rgb(62, 62, 62);
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 40px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+ }
+
+ .vibor button:hover {
+    color: black;
+ }
+
  @media only screen and (max-width: 1400px) {
     .infoblock {
         width: 100%;
@@ -315,23 +388,51 @@ input {
 
 @media only screen and (max-width: 768px) {
     .user {
-        width: 190px;
-        height: 296.4px;
+        width: 184px;
+        height: 287.06px;
     }
     .cost {
-        font-size: 16px;
+        font-size: 15px;
     }
     .producer {
-        font-size: 13px;
+        font-size: 12px;
     }
     .overlay {
-        font-size: 10px;
+        font-size: 9px;
     }
 }
 
 @media only screen and (max-width: 576px) {
     .user {
-        width: 175px;
-        height: 273px;
+        width: 165px;
+        height: 257.4px;
+    }
+    .infoblock {
+        justify-content: end;
+    }
+    .menu {
+        display: block;
+    }
+    .infoblock button {
+        display: none;
+    }
+    .container {
+        margin-top: 60px;
+    }
+    input {
+        width: 290px;
+        font-size: 17px;
+        border: 3px solid black;
+    }
+    .addedHim {
+        font-size: 20px;
+        width: 145px;
+        height: 45px;
+    }
+    .vibor {
+        display: block;
+    }
+    .backGrey {
+        display: block;
     }
 }
