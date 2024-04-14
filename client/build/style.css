@@ -317,16 +317,21 @@ input {
     position: fixed;
     top: 0;
     left: -425px;
-    margin-left: 0px;
     width: 80%;
-    height: 100%;
     background: white;
     border-radius: 30px;
     z-index: 6;
-    display: flex;
     flex-direction: column;
     display: none;
+    align-items: center;
  }
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+}
 
  .perehod {
     margin-left: 400px;
@@ -343,19 +348,39 @@ input {
     transition: 0.3s ease-in-out;
  }
 
- .vibor button {
+.vibor h1 {
+    margin-left: 40px;
+    margin-right: 10px;
+    margin-top: 40px;
+}
+
+.vibor li {
+    width: 80%;
     margin-top: 40px;
     color: rgb(62, 62, 62);
     font-size: 20px;
     font-weight: 700;
     margin-left: 40px;
     margin-right: 10px;
+    margin-bottom: 50px;
     border: none;
     cursor: pointer;
+    text-align: start;
  }
 
- .vibor button:hover {
+ .vibor li:hover {
     color: black;
+ }
+
+ .vibor li::before {
+    content: ">";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    display: inline-block;
  }
 
  @media only screen and (max-width: 1400px) {
@@ -430,9 +455,18 @@ input {
         height: 45px;
     }
     .vibor {
-        display: block;
+        display: flex;
     }
     .backGrey {
         display: block;
+    }
+}
+
+@media only screen and (max-width: 362px) {
+    .vibor li::before {
+        display: none;
+    }
+    .vibor h1 {
+        display: none;
     }
 }
