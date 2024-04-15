@@ -80,7 +80,7 @@ app.patch('/editUser/:id', async (req, res) => {
 app.patch('/editSale', async (req, res) => {
 	try {
 		const { newSale } = req.body
-		const user = await UserModel.updateMany({}, { price: price }) 
+		const user = await UserModel.updateMany({ sale: { $gt: 0 }}, { sale: newSale }) 
 		if (user) {
 			user.sale = newSale
 		}
