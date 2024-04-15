@@ -26,8 +26,8 @@ app.get('/getUsers', async (req, res) => {
 		const users = await UsersModel.find({})
 		res.send(users)
 	} catch (err) {
-		console.error('Произошла ошибка при получении пользователей', err)
-		res.send({ error: 'Произошла ошибка при получении пользователей', err })
+		console.error('Произошла ошибка при получении продуктов', err)
+		res.send({ error: 'Произошла ошибка при получении продуктов', err })
 	}
 })
 
@@ -36,8 +36,8 @@ app.get('/getSale', async (req, res) => {
 		const users = await UsersModel.find({ sale: { $gt: 0 }})
 		res.send(users)
 	} catch (err) {
-		console.error('Произошла ошибка при получении пользователей', err)
-		res.send({ error: 'Произошла ошибка при получении пользователей', err })
+		console.error('Произошла ошибка при получении продуктов', err)
+		res.send({ error: 'Произошла ошибка при получении продуктов', err })
 	}
 })
 
@@ -48,11 +48,11 @@ app.post('/addUser', async (req, res) => {
 		const { name, picture, cost, quantity, sale } = req.body
 		const newUser = { name, picture, cost, quantity, sale }
 		await UserModel.create(newUser)
-		res.send({ message: 'Пользователь успешно добавлен' })
+		res.send({ message: 'Продукта успешно добавлен' })
 	} catch (err) {
-		console.error('Произошла ошибка при добавлении нового пользователя', err)
+		console.error('Произошла ошибка при добавлении нового продукта', err)
 		res.send({
-			error: `Произошла ошибка при добавлении нового пользователя ${err}`
+			error: `Произошла ошибка при добавлении нового продукта ${err}`
 		})
 	}
 })
@@ -68,11 +68,28 @@ app.patch('/editUser/:id', async (req, res) => {
 			user.sale = newSale
 		}
 		await user.save()
-		res.send({ message: 'Пользователь успешно отредактирован' })
+		res.send({ message: 'Cкидка успешно изменена' })
 	} catch (err) {
-		console.error('Произошла ошибка при редактировании пользователя', err)
+		console.error('Произошла ошибка при редактировании скидки', err)
 		res.send({
-			error: `Произошла ошибка при редактировании пользователя ${err}`
+			error: `Произошла ошибка при редактировании скидки ${err}`
+		})
+	}
+})
+
+app.patch('/editSale', async (req, res) => {
+	try {
+		const { newSale } = req.body
+		const user = await UserModel.updateMany({}, { price: price }) 
+		if (user) {
+			user.sale = newSale
+		}
+		await user.save()
+		res.send({ message: 'Cкидка успешно удалены' })
+	} catch (err) {
+		console.error('Произошла ошибка при удалении скидок', err)
+		res.send({
+			error: `Произошла ошибка при удалении скидок ${err}`
 		})
 	}
 })
