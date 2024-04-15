@@ -86,7 +86,6 @@ app.patch('/editSale', async (req, res) => {
 			user.sale = newSale
 			user.save()
 		})
-		await users.save()
 		res.send({ message: 'Cкидка успешно удалены' })
 	} catch (err) {
 		console.error('Произошла ошибка при удалении скидок', err)
