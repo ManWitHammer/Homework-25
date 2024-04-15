@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+    font-family: "Merriweather", serif;
+    font-style: normal;
 }
 
 body,
@@ -15,16 +16,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-.mainT {
-	width: 100%;
-	align-items: center;
-	font-size: 30px;
-	font-weight: 600;
-	text-align: center;
-	font-family: 'Poppins', sans-serif;
-    font-family: 'Rubik', sans-serif;  
 }
 
 .infoblock {
@@ -41,8 +32,6 @@ body {
     color: white;
     font-weight: 700;
     font-size: 50px;
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Rubik', sans-serif;  
     z-index: 2;
 	gap: 2.5%;
 	padding: 15px;
@@ -72,18 +61,6 @@ body {
       }
   }
 
-.aboutblock {
-    width: 1400px;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    padding: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -97,7 +74,7 @@ body {
 }
 
 .container {
-    margin-top: 110px;
+    margin-top: 130px;
     width: 1400px;
     background: white;
     padding: 20px;
@@ -118,7 +95,6 @@ body {
     padding: 5px;
     background: white;
     border-radius: 15px;
-    font-family: 'Oswald', sans-serif;
     cursor: pointer;
 }
 
@@ -154,16 +130,6 @@ body {
     white-space: nowrap;
 }
 
-.upT {
-    color: white;
-    font-size: 38px;
-}
-
-.downT {
-    color: white;
-    font-size: 15px;
-}
-
 .overlay {
     width: 18%;
     height: 22px;
@@ -193,64 +159,28 @@ body {
     align-items: center;
     z-index: 99;
     transition: 1s ease;
-  }
+}
    
-  .spinner {
+.spinner {
     width: 50px;
     height: 50px;
     border: 5px solid #cccccc;
     border-top-color: #e73c7e;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-  }
+}
 
-  .invisblock {
+.invisblock {
     background: rgba(255, 255, 255, 0.0);
-  }
+}
    
-  @keyframes spin {
+@keyframes spin {
     0% {
       transform: rotate(0deg);
     }
     100% {
       transform: rotate(360deg);
     }
-  }
-
-.cutscene {
-	background: #000;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	z-index: 5;
-	color: white;
-	font-size: 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	font-family: "Nanum Gothic", sans-serif;
-	font-weight: 600;
-	font-style: normal;
-}
-
-.cutscene p {
-	margin: 15%;
-	width: 60%;
-	
-}
-
-#animatedText span {
-    opacity: 0;
-    transition: opacity 0.05s ease-in;
-}
-
-.cutscene h1 {
-	position: absolute;
-	margin-top: 35%;
-	cursor: pointer;
 }
 
 .hide {
@@ -276,9 +206,9 @@ input {
 	border-radius: 10px;
  }
  
- input:placeholder-shown { color: none; }
+input:placeholder-shown { color: none; }
  
- .addedHim {
+.addedHim {
 	font-size: 30px;
 	width: 30%;
 	height: 50px;
@@ -287,22 +217,21 @@ input {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
- }
+}
 
- .menu {
+.menu {
     display: none;
     width: 40px;
     height: 40px;
     cursor: pointer;
     margin-right: 20px;
-    
- }
+}
 
- .menu span {
+.menu span {
     font-size: 100%;
- }
+}
 
- .backGrey {
+.backGrey {
     position: fixed;
     display: none;
     top: 0;
@@ -311,20 +240,20 @@ input {
     bottom: 0;
     background: rgba(70, 70, 70, 0.729);
     z-index: 5;
- }
+}
 
- .vibor {
+.vibor {
     position: fixed;
     top: 0;
-    left: -425px;
-    width: 80%;
+    left: -450px;
+    width: 82%;
     background: white;
     border-radius: 30px;
     z-index: 6;
     flex-direction: column;
     display: none;
     align-items: center;
- }
+}
 
 ul {
     list-style: none;
@@ -333,23 +262,23 @@ ul {
     width: 90%;
 }
 
- .perehod {
+.perehod {
     margin-left: 400px;
     transition: 0.3s ease-in-out;
- }
+}
 
- .perehod1 {
+.perehod1 {
     margin-left: 0px;
     transition: 0.3s ease-in-out;
- }
+}
 
- .hide1 {
+.hide1 {
     background: rgba(255, 255, 255, 0.0);
     transition: 0.3s ease-in-out;
- }
+}
 
 .vibor h1 {
-    margin-left: 40px;
+    margin-left: 45px;
     margin-right: 10px;
     margin-top: 40px;
 }
@@ -360,19 +289,19 @@ ul {
     color: rgb(62, 62, 62);
     font-size: 20px;
     font-weight: 700;
-    margin-left: 40px;
+    margin-left: 45px;
     margin-right: 10px;
     margin-bottom: 50px;
     border: none;
     cursor: pointer;
     text-align: start;
- }
+}
 
- .vibor li:hover {
+.vibor li:hover {
     color: black;
- }
+}
 
- .vibor li::before {
+.vibor li::before {
     content: ">";
     position: absolute;
     width: 10px;
@@ -381,9 +310,9 @@ ul {
     margin-top: 5px;
     margin-right: 10px;
     display: inline-block;
- }
+}
 
- @media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1400px) {
     .infoblock {
         width: 100%;
     }
@@ -397,8 +326,8 @@ ul {
 
 @media only screen and (max-width: 1024px) {
     .user {
-        width: 205px;
-        height: 319.8px;
+        width: 200px;
+        height: 312px;
     }
     .cost {
         font-size: 20px;
@@ -409,12 +338,16 @@ ul {
     .overlay {
         font-size: 12px;
     }
+    .container {
+        margin-top: 105px;
+        gap: 16px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .user {
-        width: 184px;
-        height: 287.06px;
+        width: 180px;
+        height: 280.8px;
     }
     .cost {
         font-size: 15px;
@@ -429,8 +362,8 @@ ul {
 
 @media only screen and (max-width: 576px) {
     .user {
-        width: 165px;
-        height: 257.4px;
+        width: 160px;
+        height: 249.6px;
     }
     .infoblock {
         justify-content: end;
@@ -443,6 +376,7 @@ ul {
     }
     .container {
         margin-top: 60px;
+        gap: 12px;
     }
     input {
         width: 290px;

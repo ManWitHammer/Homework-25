@@ -4,15 +4,15 @@ import patchData from './modules/patchData.mjs'
 
 const container = document.querySelector('.container')
 const preloader = document.querySelector('.preloader');
-const infoblocked = document.querySelector('.infoblock')
 const spinner = document.querySelector('.spinner')
 const body = document.querySelector('body')
 const getAll = document.querySelectorAll('.getAll')
 const getSale = document.querySelectorAll('.getSale')
 const addSale = document.querySelectorAll('.addSale')
 const addProduct = document.querySelectorAll('.addProduct')
+const delSale = document.querySelectorAll('.remSale')
 const menu = document.querySelector('.menu')
-let sales = [5, 10, 15, 20, 25]
+let sales = [5, 10, 15, 20, 25, 30]
 
 window.addEventListener('load', function () {
     preloader.classList.add('invisblock');
@@ -23,52 +23,6 @@ window.addEventListener('load', function () {
   });
 
 const users = await getData('https://readberries.onrender.com/getUsers')
-
-document.addEventListener('DOMContentLoaded', async () => {
-	if (!localStorage.getItem('cutscene')) {
-		body.insertAdjacentHTML('afterbegin', 
-		`
-		<div class="cutscene">
-			<p id="animatedText"></p>
-		</div>
-		`)
-		const text = "Ты администратор этой странички. Твоя задача добавлять товары, а также добавлять на них скидки. Для этого мы тебе упростили жизнь, и добавили кнопки, отвечающиеся за что-то. Удачи тебе...";
-		const words = text.split("")
-		const cutscene = document.querySelector('.cutscene')
-		const animatedText = document.getElementById("animatedText");
-		let i = 0;
-		
-		const displayNextWord = () => {
-			if (i < words.length) {
-				const wordSpan = document.createElement("span");
-				wordSpan.textContent = words[i]
-				animatedText.appendChild(wordSpan)
-				
-				setTimeout(() => {
-					wordSpan.style.opacity = 1;
-				}, 20)
-				
-				i++
-				setTimeout(displayNextWord, 90)
-			}
-		}
-    	displayNextWord()
-		setTimeout(() => {
-			cutscene.insertAdjacentHTML('afterbegin',
-			`
-			<h1>Пропустить...</h1>
-			`)
-			const miss = document.querySelector('.cutscene h1')
-			miss.addEventListener('click', () => {
-				cutscene.classList.add('hide')
-				localStorage.setItem('cutscene', true)
-				setTimeout(() => {
-					cutscene.remove()
-				}, 1000)
-			})
-		}, 5000)
-	}
-})
 
 getAll.forEach(el => {
 	el.addEventListener('click', async () => {
@@ -183,7 +137,7 @@ addProduct.forEach(el => {
 menu.addEventListener('click', async () => {
 	body.insertAdjacentHTML('afterbegin',
 	`
-	<div class="backGrey"></div>
+		<div class="backGrey"></div>
 	`)
 	const backGrey = document.querySelector('.backGrey')
 	const vibor = document.querySelector('.vibor')
@@ -198,5 +152,21 @@ menu.addEventListener('click', async () => {
 		setTimeout(() => {
 			backGrey.remove()
 		}, 400)
+	})
+})
+
+delSale.forEach(el => {
+	el.addEventListener('click', async () => {
+		try {
+			const newSale = 0
+			const patchThis = {
+				newSale
+			}
+			const info = await patchData(`https://readberries.onrender.com/editSale`, patchThis)
+			console.log(info)
+			alert(`Скидки у всех товаров были удалены безвозвратно`)
+		} catch (err) {
+			console.error('Произошла ошибка при получении пользователей', err)
+		}
 	})
 })
