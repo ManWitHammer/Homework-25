@@ -1,172 +1,50 @@
+// TODO: баг со скидкой, который уменьшает его размер высоты
+// TODO: Сделать разнообразие к примеру написать. Что-то если не будет товаров.
+// TODO: Сделать объявлении при создании товара.
+
 import getData from './modules/getData.mjs'
 import postData from './modules/postData.mjs'
 import patchData from './modules/patchData.mjs'
+import preloader from './modules/preloader.mjs'
+import getAllmd from './modules/getAllmd.mjs'
+import getSalemd from './modules/getSalemd.mjs'
+import addSalemd from './modules/addSalemd.mjs'
+import addProductmd from './modules/addProduct.mjs'
+import delSalemd from './modules/delSalemd.mjs'
+import menumd from './modules/menumd.mjs'
 
 const container = document.querySelector('.container')
-const preloader = document.querySelector('.preloader');
-const spinner = document.querySelector('.spinner')
 const body = document.querySelector('body')
+const preload = document.querySelector('.preloader');
 const getAll = document.querySelectorAll('.getAll')
 const getSale = document.querySelectorAll('.getSale')
 const addSale = document.querySelectorAll('.addSale')
 const addProduct = document.querySelectorAll('.addProduct')
 const delSale = document.querySelectorAll('.remSale')
 const menu = document.querySelector('.menu')
+const button = document.querySelector('.addedHim')
+const container1 = document.querySelector('.createProduct')
+const form = document.querySelector('form')
+const vibor = document.querySelector('.vibor')
 let sales = [5, 10, 15, 20, 25, 30]
 
-window.addEventListener('load', function () {
-    preloader.classList.add('invisblock');
-    spinner.style.display = 'none'
-    setTimeout(() => {
-        preloader.style.display = 'none'
-    }, 1000)
-  });
+document.addEventListener('load', preloader(preload))
 
-const users = await getData('https://readberries.onrender.com/getUsers')
-
-getAll.forEach(el => {
-	el.addEventListener('click', async () => {
-		container.innerHTML = ''
-		try {
-			users.forEach(el => {
-				container.insertAdjacentHTML('beforeend',
-				`
-				<div class="user">
-					<div class="picture">
-						<img src="${el.picture}">
-						${el.sale != 0 ? `<div class="overlay">-${el.sale}%</div>` : ''}
-						<div class="timer"></div>
-					</div>
-					<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span>`
-					: ''} ${(el.cost - el.cost * (el.sale / 100)).toFixed(2)}</p>
-					<p class="producer">${el.name}</p>
-					<p class="producer">${el.quantity != 0 ? `<span>${el.quantity}</span> в наличии` : 'нет в наличии'}</p>
-				</div>
-				`
-				)
-			})
-		} catch (err) {
-			console.error('Произошла ошибка при получении пользователей', err)
-		}
+document.addEventListener('DOMContentLoaded', () => {
+	getAll.forEach(el => {
+	  el.addEventListener('click', () => getAllmd(container, container1, getData))
 	})
-})
-
-getSale.forEach(el => {
-	el.addEventListener('click', async () => {
-		container.innerHTML = ''
-		try {
-			let users = await getData('https://readberries.onrender.com/getSale')
-			users.forEach(el => {
-				container.insertAdjacentHTML('beforeend',
-				`
-				<div class="user">
-					<div class="picture">
-						<img src="${el.picture}">
-						${el.sale != 0 ? `<div class="overlay">-${el.sale}%</div>` : ''}
-						<div class="timer"></div>
-					</div>
-					<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span> => ` 
-					: ''} ${(el.cost - el.cost * (el.sale / 100)).toFixed(2)}</p>
-					<p class="producer">${el.name}</p>
-					<p class="producer">${el.quantity != 0 ? `<span>${el.quantity}</span> в наличии` : 'нет в наличии'}</p>
-				</div>
-				`
-				)
-			})
-		} catch (err) {
-			console.error('Произошла ошибка при получении пользователей', err)
-		}
+	getSale.forEach(el => {
+		el.addEventListener('click', () => getSalemd(container, container1, getData)) 
 	})
-})
-
-addSale.forEach(el => {
-	el.addEventListener('click', async () => {
-		try {
-			const user = users[Math.floor(Math.random() * users.length)]
-			const newSale = sales[Math.floor(Math.random() * sales.length)]
-			const patchThis = {
-				newSale
-			}
-			const info = await patchData(`https://readberries.onrender.com/editUser/${user._id}`, patchThis)
-			console.log(info)
-			if (user.sale == 0) {
-				alert(`Скидка ${newSale}% была добавлена у товара ${user.name}`)
-			} else {
-				alert(`Скидка ${newSale}% была обнавлена у товара ${user.name}`)
-			}
-		} catch (err) {
-			console.error('Произошла ошибка при получении пользователей', err)
-		}
+	addSale.forEach(el => {
+		el.addEventListener('click', () => addSalemd(sales, getData, patchData))
 	})
-})
-
-addProduct.forEach(el => {
-	el.addEventListener('click', async () => {
-		container.innerHTML = ''
-		try {
-			container.insertAdjacentHTML('beforeend',
-			`
-			<form action="#">
-				<input type="text" name="name" class="namedHim" placeholder="название товара">
-				<input type="text" name="cost" placeholder="цена товара" class="costHim">
-				<input type="number" name="quantity" placeholder="колличество товаров" class="quantityHim">
-				<input type="text" name="image" placeholder="ссылка на картинку желательно формат 5x6" class="imagedHim">
-				<button type="submit" class="addedHim">Добавить</button>
-			</form>
-			`)
-			const button = document.querySelector('.addedHim')
-			button.addEventListener('click', async (e) => {
-				const form = document.querySelector('form')
-				const data = new FormData(form)
-				const user = {
-					name: data.get('name'),
-					picture: data.get('image'),
-					cost: +data.get('cost'),
-					quantity: +data.get('quantity'),
-					sale: 0
-				}
-				await postData(`https://readberries.onrender.com/addUser`, user)
-				form.reset()
-			})
-		} catch (err) {
-			console.error('Произошла ошибка при получении пользователей', err)
-		}
+	addProduct.forEach(el => {
+		el.addEventListener('click', () => addProductmd(container, container1, form, button, postData))
 	})
-})
-
-menu.addEventListener('click', async () => {
-	body.insertAdjacentHTML('afterbegin',
-	`
-		<div class="backGrey"></div>
-	`)
-	const backGrey = document.querySelector('.backGrey')
-	const vibor = document.querySelector('.vibor')
-	setTimeout(() => {
-		vibor.classList.add('perehod')
-		vibor.classList.remove('perehod1')
-	}, 10)
-	backGrey.addEventListener('click', () => {
-		vibor.classList.remove('perehod')
-		vibor.classList.add('perehod1')
-		backGrey.classList.add('hide1')
-		setTimeout(() => {
-			backGrey.remove()
-		}, 400)
+	delSale.forEach(el => {
+		el.addEventListener('click', () => delSalemd(patchData))
 	})
-})
-
-delSale.forEach(el => {
-	el.addEventListener('click', async () => {
-		try {
-			const newSale = 0
-			const patchThis = {
-				newSale
-			}
-			const info = await patchData(`https://readberries.onrender.com/editSale`, patchThis)
-			console.log(info)
-			alert(`Скидки у всех товаров были удалены безвозвратно`)
-		} catch (err) {
-			console.error('Произошла ошибка при получении пользователей', err)
-		}
-	})
+	menu.addEventListener('click', async () => menumd(body, vibor))
 })

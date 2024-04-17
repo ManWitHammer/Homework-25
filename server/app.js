@@ -80,7 +80,7 @@ app.patch('/editUser/:id', async (req, res) => {
 app.patch('/editSale', async (req, res) => {
 	try {
 		const { newSale } = req.body
-		const users = await UserModel.find({});
+		const users = await UserModel.find({ sale: { $gt: 0 }})
 
 		users.forEach(user => {
 			user.sale = newSale
