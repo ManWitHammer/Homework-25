@@ -1,7 +1,3 @@
-// TODO: баг со скидкой, который уменьшает его размер высоты
-// TODO: Сделать разнообразие к примеру написать. Что-то если не будет товаров.
-// TODO: Сделать объявлении при создании товара.
-
 import getData from './modules/getData.mjs'
 import postData from './modules/postData.mjs'
 import patchData from './modules/patchData.mjs'
@@ -32,7 +28,7 @@ document.addEventListener('load', preloader(preload))
 
 document.addEventListener('DOMContentLoaded', () => {
 	getAll.forEach(el => {
-	  el.addEventListener('click', () => getAllmd(container, container1, getData))
+	  el.addEventListener('click', () => getAllmd(container, container1, getData, preload))
 	})
 	getSale.forEach(el => {
 		el.addEventListener('click', () => getSalemd(container, container1, getData)) 

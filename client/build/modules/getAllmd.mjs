@@ -1,8 +1,13 @@
-const getAllmd = async (container, container1, getData) => {
+const getAllmd = async (container, container1, getData, preload) => {
     container.innerHTML = ''
 	container1.style.display = 'none'
+	container.insertAdjacentHTML('beforeend',
+	`
+    <div class="spinner"></div>
+	`)
 	try {
 		const users = await getData('https://readberries.onrender.com/getUsers')
+		container.innerHTML = ''
 		users.forEach(el => {
 			container.insertAdjacentHTML('beforeend',
 			`
