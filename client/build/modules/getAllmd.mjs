@@ -15,7 +15,6 @@ const getAllmd = async (container, container1, getData, preload) => {
 				<div class="picture">
 					<img src="${el.picture}" onerror = "this.classList.add('notFined')">
 					${el.sale != 0 ? `<div class="overlay">-${el.sale}%</div>` : ''}
-					<div class="timer"></div>
 				</div>
 				<p class="cost">${el.sale != 0 ? `<span style="text-decoration: line-through;">${el.cost}</span>`
 				: ''} ${(el.cost - el.cost * (el.sale / 100)).toFixed(2)}</p>
