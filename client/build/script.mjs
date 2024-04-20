@@ -22,6 +22,7 @@ const button = document.querySelector('.addedHim')
 const container1 = document.querySelector('.createProduct')
 const form = document.querySelector('form')
 const vibor = document.querySelector('.vibor')
+const up = document.querySelector('.scrollUp')
 let sales = [5, 10, 15, 20, 25, 30]
 
 document.addEventListener('load', preloader(preload))
@@ -42,5 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	delSale.forEach(el => {
 		el.addEventListener('click', () => delSalemd(patchData))
 	})
+	up.addEventListener('click', () => window.scrollTo({ top: 0, behavior:'smooth' }))
 	menu.addEventListener('click', async () => menumd(body, vibor))
 })

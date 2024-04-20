@@ -18,6 +18,20 @@ body {
     flex-direction: column;
 }
 
+body::-webkit-scrollbar {
+	width: 18px;
+}
+
+body::-webkit-scrollbar-track {
+	background: none;
+}
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+}
+
 .infoblock {
     position: fixed;
     width: 1400px;
@@ -345,6 +359,26 @@ ul {
     height: 10px;
     right: 10px;
     display: inline-block;
+}
+
+.scrollUp {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    cursor: pointer;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    user-select: none;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
 }
 
 @media only screen and (max-width: 1400px) {

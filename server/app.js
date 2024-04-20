@@ -41,7 +41,6 @@ app.get('/getSale', async (req, res) => {
 	}
 })
 
-let a = 12123.2132
 // добавление нового пользователя в БД
 app.post('/addUser', async (req, res) => {
 	try {
